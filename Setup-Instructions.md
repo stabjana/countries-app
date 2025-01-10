@@ -145,7 +145,7 @@ npm run dev
 The applications will be available at:
 
 - Frontend: http://localhost:5180
-- Backend: http://localhost:3000
+- Backend: http://localhost:5001
 
 6. Development Notes
 

@@ -4,12 +4,16 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 @Injectable()
 export class SupabaseService {
-  private supabase: SupabaseClient;
+  private readonly _supabase: SupabaseClient;
 
   constructor(private configService: ConfigService) {
     const url = this.configService.get<string>('SUPABASE_URL');
     const key = this.configService.get<string>('SUPABASE_ANON_KEY');
-    this.supabase = createClient(url, key);
+    this._supabase = createClient(url, key);
+  }
+
+  get supabase() {
+    return this._supabase;
   }
 
   async getUsers() {

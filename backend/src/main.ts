@@ -12,9 +12,10 @@ async function bootstrap() {
 
   // Enable CORS for local React development
   app.enableCors({
-    origin: 'http://localhost:5180',
+    origin: true, // Allow all origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
-  await app.listen(process.env.PORT ?? 5000);
+  await app.listen(process.env.PORT ?? 5001);
 }
 bootstrap();
