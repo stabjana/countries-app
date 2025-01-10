@@ -7,9 +7,10 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { TestData } from "../types/test";
 
 interface DynamicTableProps {
-  data: Array<Record<string, unknown>>;
+  data: Array<Record<string, unknown>> | TestData[];
 }
 
 export const DynamicTable = ({ data }: DynamicTableProps) => {
