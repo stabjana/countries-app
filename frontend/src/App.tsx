@@ -4,13 +4,14 @@ import { TestData } from "./components/TestData";
 import { Login } from "./components/Auth/Login";
 import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import { Navigation } from "./components/Auth/Navigation";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Box>
-    
+          <Navigation />
           <Box sx={{ p: 3 }}>
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -19,7 +20,7 @@ function App() {
                 path="/protected"
                 element={
                   <ProtectedRoute>
-                    < > </>
+                    <> </>
                   </ProtectedRoute>
                 }
               />
