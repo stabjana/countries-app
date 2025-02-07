@@ -2,10 +2,10 @@ import { Controller, Get } from '@nestjs/common';
 import { SupabaseService } from '../services/supabase.service';
 
 @Controller('test')
-export class TestController {
+export class TestController { // handles requests - is defining endpoint
   constructor(private readonly supabaseService: SupabaseService) {}
 
-  @Get('supabase')
+  @Get('supabase') // endpoint - /supabase
   async testConnection() {
     try {
       const { data, error } = await this.supabaseService.supabase
