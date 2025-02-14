@@ -1,6 +1,8 @@
+// navigation
 import { AppBar, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import {Link as RouterLink} from "react-router-dom";
+import { Lock } from "@mui/icons-material";
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
@@ -14,15 +16,12 @@ export const Navigation = () => {
         <Button color="inherit" component={RouterLink} to="/test">
           Test
         </Button>
+        <Button color="inherit" component={RouterLink} to="/protected" startIcon={<Lock/>}>ProtectedData</Button>
+
         {user ? (
             <Button color="inherit" onClick={signOut}>Logout</Button>
         ) : (
             <Button color="inherit" component = {RouterLink} to="/login">Login</Button>
-        )}
-        {user ? (
-              <Button color="inherit" component={RouterLink} to="/protected">ProtectedData</Button>
-        ) : (
-          <Button color="inherit" ></Button>
         )}
       </Toolbar>
     </AppBar>

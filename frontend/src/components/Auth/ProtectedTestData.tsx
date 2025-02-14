@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../config/supabase";
 import { TestData } from "../../types/test";
 import { DynamicTable } from "../DynamicTable";
+import { CreateEntryForm } from "./CreateEntryForm";
 
 export const ProtectedTestData = () => {
     
@@ -39,6 +40,9 @@ export const ProtectedTestData = () => {
             <Typography >
                 Protected Test Data - This data is only accessible to Authenticated Users
             </Typography>
+            
+        <CreateEntryForm onSuccess={fetchProtectedData} />
+
         {data.length > 0 ? (
             <DynamicTable data={data} />
         ) : (

@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { Navigation } from "./components/Auth/Navigation";
 import { ProtectedTestData } from "./components/Auth/ProtectedTestData";
+import { AuthRedirect } from "./components/Auth/AuthRedirect";
 
 function App() {
   return (
@@ -15,7 +16,12 @@ function App() {
           <Navigation />
           <Box sx={{ p: 3 }}>
             <Routes>
-              <Route path="/login" element={<Login />} />
+            <Route path="/login" element={
+                <>
+                <AuthRedirect/>
+                <Login/>
+                </>
+              } />
               <Route path="/test" element={<TestData />} />
               <Route
                 path="/protected"
@@ -25,6 +31,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/" element={<div>Home is here</div>} />;
               {/* Other routes... */}
             </Routes>
           </Box>
