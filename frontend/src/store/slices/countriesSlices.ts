@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CountryState } from "../../types/country";
 import { countriesApi } from "../../api/services/countries";
+import { RootState } from "../store";
 
 const initialState: CountryState = {
     countries: [],
@@ -40,3 +41,8 @@ export const countriesSlice = createSlice ({
     }
 
 })
+
+export const selectAllCountries = (state: RootState) => state.countries.countries; // its not connected into store.ts - now its connected
+
+export const {clearSelectedCountry} = countriesSlice.actions;
+export default countriesSlice.reducer;
