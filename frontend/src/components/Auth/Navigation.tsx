@@ -19,6 +19,11 @@ export const Navigation = () => {
         ) : (
             <Button color="inherit" component = {RouterLink} to="/login">Login</Button>
         )}
+        {user ? (
+              <Button color="inherit" component={RouterLink} to="/protected">ProtectedData</Button>
+        ) : (
+          <Button color="inherit" ></Button>
+        )}
       </Toolbar>
     </AppBar>
   );
