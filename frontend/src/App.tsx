@@ -7,8 +7,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { Navigation } from "./components/Auth/Navigation";
 import { ProtectedTestData } from "./components/Auth/ProtectedTestData";
 import { AuthRedirect } from "./components/Auth/AuthRedirect";
-import CountryDetail from "./components/CountryDetail";
-import CountriesList from "./components/countriesList";
+import CountryDetail from "./components/Countries/CountryDetail";
+import CountriesList from "./components/Countries/CountriesList";
 
 function App() {
   return (

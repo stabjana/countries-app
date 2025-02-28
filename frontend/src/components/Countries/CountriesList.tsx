@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   fetchAlLCountries,
   selectAllCountries,
-} from "../store/slices/countriesSlices";
+} from "../../store/slices/countriesSlices";
 import CountryCard from "./CountryCard";
 
 const CountriesList = () => {
