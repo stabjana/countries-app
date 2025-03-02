@@ -43,6 +43,8 @@ export const countriesSlice = createSlice ({
 })
 
 export const selectAllCountries = (state: RootState) => state.countries.countries; // its not connected into store.ts - now its connected
+export const selCountriesLoading = (state: RootState) => state.countries.loading;
+export const selectCountriesError = (state: RootState) => state.countries.error;
 
 export const {clearSelectedCountry} = countriesSlice.actions;
 export default countriesSlice.reducer;
