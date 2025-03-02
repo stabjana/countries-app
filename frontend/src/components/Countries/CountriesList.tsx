@@ -26,7 +26,12 @@ const CountriesList = () => {
       <h1>Countries</h1>
       <div className="countries-list">
         {countries.map((country) => (
-          <Link key={country.cca3} to={`/country/${country.cca3}`}>
+          <Link
+            key={country.name.common}
+            to={`/country/${encodeURIComponent(
+              country.name.common.toLowerCase()
+            )}`}
+          >
             <CountryCard
               name={country.name.common}
               capital={country.capital?.[0] || "N/A"}

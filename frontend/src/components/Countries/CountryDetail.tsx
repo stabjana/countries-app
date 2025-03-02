@@ -12,7 +12,7 @@ import WeatherInfo from "../WeatherInfo/WeatherInfo";
 import { WeatherData } from "../../types/weather";
 
 const CountryDetail: React.FC = () => {
-  const { cc3 } = useParams<{ cc3: string }>();
+  const { name } = useParams<{ name: string }>();
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [weatherError, setWeatherError] = useState<string | null>(null);
 
@@ -23,7 +23,7 @@ const CountryDetail: React.FC = () => {
 
   // Find the country based on cc3
   const country = countries.find(
-    (country) => country.cca3.toLowerCase() === cc3?.toLowerCase()
+    (country) => country.name.common.toLowerCase() === name?.toLowerCase()
   );
 
   // Fetch countries if not available

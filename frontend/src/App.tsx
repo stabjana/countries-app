@@ -38,7 +38,7 @@ function App() {
               />
               <Route path="/" element={<div>Home is here</div>} />;
               <Route path="/countries" element={<CountriesList />} />;
-              <Route path="/country/:cc3" element={<CountryDetail />} />;
+              <Route path="/country/:name" element={<CountryDetail />} />;
             </Routes>
           </Box>
         </Box>
