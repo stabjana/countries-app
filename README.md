@@ -1,4 +1,4 @@
-# Countries Fullstack
+# Countries Fullstack React Project
 
 A full-stack application with NestJS backend and React frontend.
 
@@ -20,8 +20,8 @@ project-root/
 1. Clone the repository:
 
 ```bash
-git clone <your-repository-url>
-cd <project-directory>
+git clone https://github.com/your-username/countries-fullstack-react.git
+cd countries-fullstack-react
 ```
 
 2. Install all dependencies (both frontend and backend):
@@ -30,7 +30,7 @@ cd <project-directory>
 npm run install:all
 ```
 
-## Development
+## Usage
 
 Start both frontend and backend development servers:
 
@@ -62,6 +62,14 @@ The applications will be available at:
 ```env
 SUPABASE_URL=https://your-supabase-instance.supabase.co
 SUPABASE_ANON_KEY=your-anon-key
+```
+
+2. Create an `.env` file in the frontend directory and define the API key variable inside it
+
+   The application requires an API key to fetch weather data. You can obtain a free API key by signing up on a weather data provider's website (e.g., OpenWeatherMap).
+
+```env
+ API_KEY=your-api-key
 ```
 
 ## Tech Stack
