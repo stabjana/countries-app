@@ -4,7 +4,8 @@ import { CountryFavorite } from "../../types/favourite";
 import { useAppSelector } from "../../store/hooks";
 import { selectAllCountries } from "../../store/slices/countriesSlices";
 import { favoritesApi } from "../../api/services/favourites";
-import { Box, CircularProgress, Typography, Alert } from "@mui/material";
+import { Box, CircularProgress, Typography, Alert, Grid } from "@mui/material";
+import CountryCard from "../Countries/CountryCard";
 
 export const Favourites = () => {
   const { user } = useAuth(); // now we have access to the user
@@ -87,10 +88,18 @@ export const Favourites = () => {
         </Alert>
       )}
 
-{
-    favourites.length === 0 ? () : ()
-}
-
+      {favourites.length === 0 ? (
+        <Alert severity="info">You have no favourite countries yet.</Alert>
+      ) : (
+        <Grid container spacing={3}>
+          {favourites.map((favorite) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={favorite.id}>
+              <CountryCard country={convertToCountry(favorite)} />
+            </Grid>
+          ))}{" "}
+          {/* we dont need a return keyword */}
+        </Grid>
+      )}
     </Box>
   );
 };

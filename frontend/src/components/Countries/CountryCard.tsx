@@ -1,24 +1,16 @@
-import React from "react";
+import { Country } from "../../types/country";
 
 interface CountryCardProps {
-  name: string;
-  capital: string;
-  population: number;
-  flag: string;
+  country: Country;
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({
-  name,
-  capital,
-  population,
-  flag,
-}) => {
+const CountryCard = ({ country }: CountryCardProps) => {
   return (
     <div className="country-card">
-      <img src={flag} alt={`${name} flag`} />
-      <h2>{name}</h2>
-      <p>Capital: {capital}</p>
-      <p>Population: {population}</p>
+      <img src={country.flags.png} alt={`${name} flag`} />
+      <h2>{country.name.common}</h2>
+      <p>Capital: {country.capital}</p>
+      <p>Population: {country.population}</p>
     </div>
   );
 };

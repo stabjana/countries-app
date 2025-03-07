@@ -33,10 +33,19 @@ const CountriesList = () => {
             )}`}
           >
             <CountryCard
-              name={country.name.common}
-              capital={country.capital?.[0] || "N/A"}
-              population={country.population}
-              flag={country.flags.png}
+              country={{
+                name: {
+                  common: country.name.common,
+                  official: country.name.official,
+                },
+                capital: country.capital || ["N/A"],
+                population: country.population,
+                flags: { png: country.flags.png, svg: country.flags.svg },
+                region: "Unknown", // Add region if necessary
+                subregion: "Unknown", // Add subregion if necessary
+                cca3: country.cca3,
+                currencies: country.currencies, // Keep existing currencies if available
+              }}
             />
           </Link>
         ))}
