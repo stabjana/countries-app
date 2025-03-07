@@ -5,7 +5,7 @@ import { CountryFavorite } from "../../types/favourite";
 // Cache for favorite status to reduce redundant API calls
 let favoritesCache: CountryFavorite[] | null = null;
 let lastFetchTime = 0;
-const CACHE_EXPIRY = 30000; // 30 seconds - to preven unnessasary calls to the Database. Data costs money!
+const CACHE_EXPIRY = 30000; // 30 seconds - to prevent unnecessary calls to the Database. Data costs money!
 
 export const favoritesApi = {
   /**
@@ -13,16 +13,15 @@ export const favoritesApi = {
    * @param useCache Whether to use cached data if available
    */
   async getFavorites(useCache = true): Promise<CountryFavorite[]> {
-    const now = Date.now();
-
+    const now = Date.now(); // Time in milliseconds since 1970-01-01 (UTC standard)
+    
     // Return cached data if it's fresh and useCache is true
     if (useCache && favoritesCache && now - lastFetchTime < CACHE_EXPIRY) {
       return favoritesCache;
     }
 
-    const { data, error } = await supabase
-      .from("country_favorites")
-      .select("*");
+    const { data, error } = await supabase.from("country_favorites").select("*");
+    // Doesn't fetch all info; it's filtered in the database per user
 
     if (error) {
       console.error("Error fetching favorites:", error);
@@ -50,7 +49,7 @@ export const favoritesApi = {
         },
       ])
       .select()
-      .single();
+      .single(); // Select and return as a single row
 
     if (error) {
       console.error("Error adding favorite:", error);
@@ -69,10 +68,7 @@ export const favoritesApi = {
    * Remove a country from favorites
    */
   async removeFavorite(countryName: string): Promise<void> {
-    const { error } = await supabase
-      .from("country_favorites")
-      .delete()
-      .eq("country_name", countryName);
+    const { error } = await supabase.from("country_favorites").delete().eq("country_name", countryName);
 
     if (error) {
       console.error("Error removing favorite:", error);
@@ -81,9 +77,7 @@ export const favoritesApi = {
 
     // Update cache if it exists
     if (favoritesCache) {
-      favoritesCache = favoritesCache.filter(
-        (fav) => fav.country_name !== countryName
-      );
+      favoritesCache = favoritesCache.filter((fav) => fav.country_name !== countryName);
     }
   },
 
@@ -93,10 +87,7 @@ export const favoritesApi = {
   async isFavorite(countryName: string): Promise<boolean> {
     // Try to use cache first
     if (favoritesCache) {
-      const found = favoritesCache.some(
-        (fav) => fav.country_name === countryName
-      );
-      return found;
+      return favoritesCache.some((fav) => fav.country_name === countryName);
     }
 
     // If no cache, make a targeted query
@@ -111,8 +102,8 @@ export const favoritesApi = {
       throw new Error(error.message);
     }
 
-    return !!data;
-  },
+    return !!data; // Converts null or undefined to false
+  }, // <-- Missing closing bracket added here
 
   /**
    * Clear the favorites cache
