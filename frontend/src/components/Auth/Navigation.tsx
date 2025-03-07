@@ -2,7 +2,7 @@
 import { AppBar, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
-import { Lock } from "@mui/icons-material";
+import { Favorite, Lock } from "@mui/icons-material";
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
@@ -38,6 +38,16 @@ export const Navigation = () => {
         <Button color="inherit" component={RouterLink} to="/countries">
           All Countries
         </Button>
+        {user && (
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/favourites"
+            startIcon={<Favorite />}
+          >
+            Favourites
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );

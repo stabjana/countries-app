@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   fetchAlLCountries,
@@ -26,28 +25,21 @@ const CountriesList = () => {
       <h1>Countries</h1>
       <div className="countries-list">
         {countries.map((country) => (
-          <Link
-            key={country.name.common}
-            to={`/country/${encodeURIComponent(
-              country.name.common.toLowerCase()
-            )}`}
-          >
-            <CountryCard
-              country={{
-                name: {
-                  common: country.name.common,
-                  official: country.name.official,
-                },
-                capital: country.capital || ["N/A"],
-                population: country.population,
-                flags: { png: country.flags.png, svg: country.flags.svg },
-                region: "Unknown", // Add region if necessary
-                subregion: "Unknown", // Add subregion if necessary
-                cca3: country.cca3,
-                currencies: country.currencies, // Keep existing currencies if available
-              }}
-            />
-          </Link>
+          <CountryCard
+            country={{
+              name: {
+                common: country.name.common,
+                official: country.name.official,
+              },
+              capital: country.capital || ["N/A"],
+              population: country.population,
+              flags: { png: country.flags.png, svg: country.flags.svg },
+              region: "Unknown",
+              subregion: "Unknown",
+              cca3: country.cca3,
+              currencies: country.currencies,
+            }}
+          />
         ))}
       </div>
     </div>
