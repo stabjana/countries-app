@@ -1,4 +1,3 @@
-import { api } from "../axios";
 import axios from "axios";
 import { WeatherData } from "../../types/weather";
 

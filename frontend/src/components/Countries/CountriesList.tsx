@@ -5,10 +5,10 @@ import {
   selectAllCountries,
 } from "../../store/slices/countriesSlices";
 import CountryCard from "./CountryCard";
+import { Grid, Typography, Container } from "@mui/material";
 
 const CountriesList = () => {
   const dispatch = useAppDispatch();
-  // const countries = useAppSelector(selectAllCountries);
   const { countries, loading, error } = useAppSelector(
     (state) => state.countries
   );
@@ -21,28 +21,32 @@ const CountriesList = () => {
   if (error) return <h3>{error}</h3>;
 
   return (
-    <div>
-      <h1>Countries</h1>
-      <div className="countries-list">
+    <Container sx={{ py: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Countries
+      </Typography>
+      <Grid container spacing={3}>
         {countries.map((country) => (
-          <CountryCard
-            country={{
-              name: {
-                common: country.name.common,
-                official: country.name.official,
-              },
-              capital: country.capital || ["N/A"],
-              population: country.population,
-              flags: { png: country.flags.png, svg: country.flags.svg },
-              region: "Unknown",
-              subregion: "Unknown",
-              cca3: country.cca3,
-              currencies: country.currencies,
-            }}
-          />
+          <Grid item xs={12} sm={6} md={4} lg={3} key={country.cca3}>
+            <CountryCard
+              country={{
+                name: {
+                  common: country.name.common,
+                  official: country.name.official,
+                },
+                capital: country.capital || ["N/A"],
+                population: country.population,
+                flags: { png: country.flags.png, svg: country.flags.svg },
+                region: country.region || "Unknown",
+                subregion: country.subregion || "Unknown",
+                cca3: country.cca3,
+                currencies: country.currencies,
+              }}
+            />
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 };
 

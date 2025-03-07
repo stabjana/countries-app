@@ -3,9 +3,12 @@ import { AppBar, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
 import { Favorite, Lock } from "@mui/icons-material";
+import { ThemeContext } from "../../theme/themeContext";
+import { useContext } from "react";
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
     <AppBar position="static" sx={{ mb: 3 }}>
@@ -15,6 +18,9 @@ export const Navigation = () => {
         </Button>
         <Button color="inherit" component={RouterLink} to="/test">
           Test
+        </Button>
+        <Button color="inherit" component={RouterLink} to="/test">
+          Flag Quiz
         </Button>
         <Button
           color="inherit"
@@ -48,6 +54,13 @@ export const Navigation = () => {
             Favourites
           </Button>
         )}
+        <Button
+          variant="contained"
+          onClick={toggleTheme}
+          sx={{ ml: "auto", mr: 2 }}
+        >
+          {isDarkMode ? "Light" : "Dark"} Mode
+        </Button>
       </Toolbar>
     </AppBar>
   );
