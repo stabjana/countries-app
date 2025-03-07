@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Country } from "../../types/country";
 import { favoritesApi } from "../../api/services/favourites";
+import { IconButton, Tooltip } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 interface FavouriteButtonProps {
   country: Country;
@@ -45,6 +47,26 @@ export const FavoriteButton = ({ country, onToggle }: FavouriteButtonProps) => {
       }
     } catch (error) {
       console.error("Error toggling favourite:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (!user) {
+    return null;
+  }
+
+  return (
+    <Tooltip
+      title={isFavorite ? "Remove from favourites" : "Add to favourites"}
+    >
+      <IconButton
+        onClick={handleToggleFavourites}
+        disabled={loading}
+        color="primary"
+      >
+        {isFavorite ? <Favorite /> : <FavoriteBorder />}
+      </IconButton>
+    </Tooltip>
+  );
 };
