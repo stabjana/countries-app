@@ -16,4 +16,3 @@ export const ThemeContext = createContext<ThemeContextType>({
   isDarkMode: false,
   toggleTheme: () => {}, // Placeholder function
 });
-

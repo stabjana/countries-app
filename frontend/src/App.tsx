@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TestData } from "./components/TestData";
 import { Login } from "./components/Auth/Login";
@@ -10,12 +10,8 @@ import { AuthRedirect } from "./components/Auth/AuthRedirect";
 import CountryDetail from "./components/Countries/CountryDetail";
 import CountriesList from "./components/Countries/CountriesList";
 import { Favourites } from "./components/Auth/Favourites";
-import { useContext } from "react";
-import { ThemeContext } from "./theme/themeContext";
 
 function App() {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-
   return (
     <AuthProvider>
       <BrowserRouter>

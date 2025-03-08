@@ -2,14 +2,15 @@ import { createTheme, ThemeOptions } from "@mui/material/styles";
 
 // Define color palette
 const colors = {
-  primary: "#05668D",
-  secondary: "#028090",
-  accent: "#00A896",
-  success: "#02C39A",
-  backgroundLight: "#F0F3BD",
-  backgroundDark: "#121212", // Dark mode background
-  textLight: "#333333",
-  textDark: "#ffffff",
+primary: "#8ecae6",
+secondary: "#219ebc",
+accent: "#fb8500",
+success: "#ffb703",
+backgroundLight: "#F3FBFF",
+backgroundDark: "#023047",
+textLight: "#001823",
+textDark: "#F3FBFF",
+smallText: "#004A6C"
 };
 
 // Base typography settings
@@ -50,8 +51,11 @@ export const lightTheme = createTheme({
     background: { default: colors.backgroundLight, paper: "#FFFFFF" },
     text: { primary: colors.textLight, secondary: colors.primary },
   },
-  typography,
-  components,
+  typography: {
+    ...typography,
+    body2: { color: colors.smallText }, // Standardmäßig für kleine Texte setzen
+  },
+    components,
 });
 
 // Dark Theme

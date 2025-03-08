@@ -7,7 +7,7 @@ import { ThemeContext } from "./themeContext";
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Memoize theme selection
+  // Memorize theme selection
   const theme = useMemo(
     () => (isDarkMode ? darkTheme : lightTheme),
     [isDarkMode]
