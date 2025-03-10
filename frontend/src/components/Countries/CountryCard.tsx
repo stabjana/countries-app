@@ -24,10 +24,23 @@ const CountryCard = ({ country }: CountryCardProps) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, height: "100%" }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        height: "100%",
+        borderRadius: 3,
+        transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
+        "&:hover": {
+          transform: "scale(1.03)",
+          boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+        },
+        backgroundColor: (theme) => theme.palette.background.paper,
+      }}
+    >
       <Link
         key={country.name.common}
         to={`/country/${encodeURIComponent(country.name.common.toLowerCase())}`}
+        style={{ textDecoration: "none", color: "inherit" }}
       >
         <CardMedia
           component="img"

@@ -65,7 +65,7 @@ export const darkTheme = createTheme({
     primary: { main: colors.accent },
     secondary: { main: colors.success },
     background: { default: colors.backgroundDark, paper: "#1E1E1E" },
-    text: { primary: colors.textDark, secondary: colors.accent },
+    text: { primary: colors.textDark, secondary: colors.primary },
   },
   typography,
   components,
