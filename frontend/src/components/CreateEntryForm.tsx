@@ -1,7 +1,7 @@
 // create entry form
 import { Alert, Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { supabase } from "../../config/supabase";
+import { supabase } from "../config/supabase";
 
 interface CreateEntryFormProps {
   onSuccess: () => void;
@@ -30,7 +30,6 @@ export const CreateEntryForm = ({ onSuccess }: CreateEntryFormProps) => {
       setDescription("");
 
       onSuccess();
-
     } catch (error) {
       const err = error as { message: string; code?: string };
       let errorMessage = err.message;

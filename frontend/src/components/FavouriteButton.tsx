@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { Country } from "../../types/country";
-import { favoritesApi } from "../../api/services/favourites";
+import { useAuth } from "../context/AuthContext";
+import { Country } from "../types/country";
+import { favoritesApi } from "../api/services/favourites";
 import { IconButton, Tooltip } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
