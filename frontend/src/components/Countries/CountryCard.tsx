@@ -8,7 +8,7 @@ import {
   CardActions,
 } from "@mui/material";
 import { Payments, Public, LocationCity, People } from "@mui/icons-material";
-import { FavoriteButton } from "../Auth/FavouriteButton";
+import { FavoriteButton } from "../FavouriteButton";
 import { Link } from "react-router-dom";
 
 interface CountryCardProps {

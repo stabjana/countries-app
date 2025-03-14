@@ -71,6 +71,7 @@ const CountriesList = () => {
       </Typography>
 
       <TextField
+        aria-label="Search for a country..."
         fullWidth
         label="Search for a country..."
         variant="outlined"
