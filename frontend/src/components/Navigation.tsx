@@ -11,8 +11,8 @@ export const Navigation = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <AppBar position="static" sx={{ mb: 3 }}>
-      <Toolbar>
+    <AppBar role="banner" position="static" sx={{ mb: 3 }}>
+      <Toolbar role="navigation" aria-label="main navigation">
         <Button color="inherit" component={RouterLink} to="/">
           Home
         </Button>
