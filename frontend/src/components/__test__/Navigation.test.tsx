@@ -40,7 +40,7 @@ describe("Navigation Component", () => {
     );
 
     // Check if navigation links are rendered
-    expect(screen.getByText("Countries")).toBeInTheDocument();
+    expect(screen.getByText("Countries")).toBeInTheDocument(); // check spelling in own data! :)
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Public Data")).toBeInTheDocument();
     expect(screen.getByText("Protected Data")).toBeInTheDocument();
