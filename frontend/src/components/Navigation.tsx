@@ -1,9 +1,9 @@
 // navigation
 import { AppBar, Button, Toolbar } from "@mui/material";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
 import { Favorite, Lock } from "@mui/icons-material";
-import { ThemeContext } from "../../theme/themeContext";
+import { ThemeContext } from "../theme/themeContext";
 import { useContext } from "react";
 
 export const Navigation = () => {

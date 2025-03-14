@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { CountryFavorite } from "../../types/favourite";
-import { useAppSelector } from "../../store/hooks";
-import { selectAllCountries } from "../../store/slices/countriesSlices";
-import { favoritesApi } from "../../api/services/favourites";
+import { useAuth } from "../context/AuthContext";
+import { CountryFavorite } from "../types/favourite";
+import { useAppSelector } from "../store/hooks";
+import { selectAllCountries } from "../store/slices/countriesSlices";
+import { favoritesApi } from "../api/services/favourites";
 import { Box, CircularProgress, Typography, Alert, Grid } from "@mui/material";
-import CountryCard from "../Countries/CountryCard";
+import CountryCard from "./Countries/CountryCard";
 
 export const Favourites = () => {
   const { user } = useAuth(); // now we have access to the user
