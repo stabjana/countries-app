@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   fetchAlLCountries,
@@ -18,35 +18,38 @@ import {
   Typography,
   CircularProgress,
   Grid,
+  Button,
 } from "@mui/material";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import PeopleIcon from "@mui/icons-material/People";
 import PublicIcon from "@mui/icons-material/Public";
 import StoreIcon from "@mui/icons-material/Store";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const CountryDetail: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [weatherError, setWeatherError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const countries = useAppSelector(selectAllCountries);
   const loading = useAppSelector(selCountriesLoading);
   const error = useAppSelector(selectCountriesError);
 
-  // Finde das Land basierend auf dem Namen
+  // Find the country by name
   const country = countries.find(
     (country) => country.name.common.toLowerCase() === name?.toLowerCase()
   );
 
-  // Lade die Länder, falls sie nicht verfügbar sind
+  // Load countries if not available
   useEffect(() => {
     if (!country) {
       dispatch(fetchAlLCountries());
     }
   }, [country, dispatch]);
 
-  // Lade das Wetter, wenn das Land verfügbar ist
+  // Load weather data if country is available
   useEffect(() => {
     if (country?.capital) {
       weatherApi
@@ -68,6 +71,7 @@ const CountryDetail: React.FC = () => {
           justifyContent: "center",
           my: 4,
           paddingX: { xs: 2, md: 4 },
+          position: "relative",
         }}
       >
         <Card
@@ -77,10 +81,12 @@ const CountryDetail: React.FC = () => {
             textAlign: "left",
             borderRadius: 2,
             width: "100%",
+            position: "relative",
+            paddingBottom: "50px", // Prevent overlap of button with content
           }}
         >
           <Grid container spacing={3} sx={{ padding: 2 }}>
-            {/* Linke Seite: Landdetails (Flagge und Infos) */}
+            {/* Left Side: Country Details */}
             <Grid item xs={12} md={6}>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <CardMedia
@@ -130,7 +136,7 @@ const CountryDetail: React.FC = () => {
               </Box>
             </Grid>
 
-            {/* Rechte Seite: Wetterinformationen */}
+            {/* Right Side: Weather Information */}
             <Grid
               item
               xs={12}
@@ -138,12 +144,12 @@ const CountryDetail: React.FC = () => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center", // Vertikal zentrieren
-                height: "100%", // Sicherstellen, dass der Grid 100% Höhe hat
+                justifyContent: "center",
+                height: "100%",
               }}
             >
               <CardContent sx={{ flexShrink: 0 }}>
-                {/* Wetter Info */}
+                {/* Weather Info */}
                 {weatherError ? (
                   <Typography color="error">{weatherError}</Typography>
                 ) : (
@@ -152,6 +158,28 @@ const CountryDetail: React.FC = () => {
               </CardContent>
             </Grid>
           </Grid>
+
+          {/* Back Button - Bottom Right Corner */}
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate(-1)}
+            sx={{
+              position: "absolute",
+              bottom: 16,
+              right: 16,
+              borderRadius: 8,
+              padding: "6px 16px",
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              backgroundColor: "primary.main",
+              "&:hover": { backgroundColor: "primary.dark" },
+            }}
+          >
+            <ArrowBackIcon fontSize="small" />
+            Back
+          </Button>
         </Card>
       </Box>
     </>

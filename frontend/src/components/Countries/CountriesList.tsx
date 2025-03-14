@@ -2,9 +2,17 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchAlLCountries } from "../../store/slices/countriesSlices";
 import CountryCard from "./CountryCard";
-import { Grid, Typography, Container, TextField } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Container,
+  TextField,
+  Fab,
+  Zoom,
+} from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { Country } from "../../types/country";
 
 const CountriesList = () => {
@@ -15,14 +23,17 @@ const CountriesList = () => {
 
   const [searchText, setSearchText] = useState("");
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchAlLCountries());
-  }, [dispatch]);
+    if (countries.length === 0) {
+      dispatch(fetchAlLCountries());
+    }
+  }, [dispatch, countries.length]);
 
   useEffect(() => {
     if (!searchText) {
-      setFilteredCountries(countries); // Wenn kein Suchtext, zeige alle Länder
+      setFilteredCountries(countries);
     } else {
       setFilteredCountries(
         countries.filter((country) =>
@@ -31,6 +42,24 @@ const CountriesList = () => {
       );
     }
   }, [searchText, countries]);
+
+  // Scroll Listener for Back to Top Button Visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (loading) return <h3>Loading countries...</h3>;
   if (error) return <h3>{error}</h3>;
@@ -63,6 +92,26 @@ const CountriesList = () => {
           </Grid>
         ))}
       </Grid>
+
+      {/* Back to Top Button */}
+      <Zoom in={showBackToTop}>
+        <Fab
+          color="primary"
+          size="small"
+          onClick={scrollToTop}
+          sx={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+            transition: "opacity 0.3s",
+            "&:hover": {
+              backgroundColor: "primary.dark",
+            },
+          }}
+        >
+          <ArrowUpwardIcon />
+        </Fab>
+      </Zoom>
     </Container>
   );
 };
