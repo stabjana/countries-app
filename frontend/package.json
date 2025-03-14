@@ -10,7 +10,11 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "e2e": "cypress run",
+    "e2e:dev": "start-server-and-test dev http://localhost:5180 cypress:run"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
