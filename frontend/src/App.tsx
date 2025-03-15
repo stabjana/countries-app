@@ -10,6 +10,7 @@ import { AuthRedirect } from "./components/Auth/AuthRedirect";
 import CountryDetail from "./components/Countries/CountryDetail";
 import CountriesList from "./components/Countries/CountriesList";
 import { Favourites } from "./components/Favourites";
+import { CountriesGame } from "./components/Countries/CountriesGame";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
               <Route path="/" element={<div>Home is here</div>} />
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/country/:name" element={<CountryDetail />} />
+              <Route path="/countriesgame" element={<CountriesGame />} />
             </Routes>
           </Box>
         </Box>
