@@ -19,7 +19,7 @@ export const Navigation = () => {
         <Button color="inherit" component={RouterLink} to="/test">
           Test
         </Button>
-        <Button color="inherit" component={RouterLink} to="/test">
+        <Button color="inherit" component={RouterLink} to="/countriesgame">
           Flag Quiz
         </Button>
         <Button
