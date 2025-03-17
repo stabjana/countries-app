@@ -4,6 +4,7 @@ import { Country } from "../types/country";
 import { favoritesApi } from "../api/services/favourites";
 import { IconButton, Tooltip } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { colors } from "../theme/theme";
 
 interface FavouriteButtonProps {
   country: Country;
@@ -63,7 +64,12 @@ export const FavoriteButton = ({ country, onToggle }: FavouriteButtonProps) => {
       <IconButton
         onClick={handleToggleFavourites}
         disabled={loading}
-        color="primary"
+        sx={{
+          color: isFavorite ? colors.lightAccent : "inherit", // Pink when favorite
+          "&:hover": {
+            color: isFavorite ? "#E85D75" : colors.lightAccent, // Darker pink on hover
+          },
+        }}
       >
         {isFavorite ? <Favorite /> : <FavoriteBorder />}
       </IconButton>

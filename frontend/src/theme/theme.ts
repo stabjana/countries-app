@@ -11,7 +11,7 @@ backgroundDark: "#023047",
 textLight: "#001823",
 textDark: "#F3FBFF",
 smallText: "#004A6C",
-lightAccent: "#FFBA65"
+lightAccent: "#FF6699"
 };
 
 // Base typography settings

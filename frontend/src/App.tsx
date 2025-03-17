@@ -11,6 +11,7 @@ import CountryDetail from "./components/Countries/CountryDetail";
 import CountriesList from "./components/Countries/CountriesList";
 import { Favourites } from "./components/Favourites";
 import { CountriesGame } from "./components/Countries/CountriesGame";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/" element={<div>Home is here</div>} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/country/:name" element={<CountryDetail />} />
               <Route path="/countriesgame" element={<CountriesGame />} />

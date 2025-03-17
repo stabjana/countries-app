@@ -17,6 +17,7 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
+import { colors } from "../../theme/theme";
 
 export const CountriesGame = () => {
   const dispatch = useAppDispatch();
@@ -129,20 +130,69 @@ export const CountriesGame = () => {
   return (
     <Container sx={{ py: 4, textAlign: "center" }}>
       {!gameStarted ? (
-        <Box>
-          <Typography variant="h5" gutterBottom>
+        <Card
+          sx={{
+            maxWidth: 600,
+            mx: "auto",
+            p: 3,
+            borderRadius: "16px",
+            boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
+          }}
+        >
+          <Typography variant="h5" gutterBottom sx={{ mb: 4 }}>
             Wanna test your knowledge about the flags you have seen on the
             countries page?
             <br />
             Then welcome to <strong>Guess the Country</strong>!
           </Typography>
-          <Button variant="contained" color="primary" onClick={startGame}>
+          <Typography variant="body1" sx={{ mt: 4, mb: 2 }}>
+            You will be shown a flag of a country and you have to guess the
+            country name. You have 10 questions to go.
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={startGame}
+            sx={{
+              background: `linear-gradient(45deg, 
+                ${colors.primary} 0%, 
+                ${colors.secondary} 20%, 
+                ${colors.success} 40%, 
+                ${colors.accent} 60%, 
+                ${colors.lightAccent} 80%, 
+                ${colors.textLight} 100%)`,
+              color: colors.textLight,
+              "&:hover": {
+                background: `linear-gradient(45deg, 
+                  ${colors.textLight} 0%, 
+                  ${colors.lightAccent} 20%, 
+                  ${colors.accent} 40%, 
+                  ${colors.success} 60%, 
+                  ${colors.secondary} 80%, 
+                  ${colors.primary} 100%)`,
+                color: colors.textLight,
+              },
+              borderRadius: "8px",
+              padding: "0.8em 1.2em",
+              margin: "1em",
+              transition: "background 0.3s ease-in-out",
+              fontWeight: "bold",
+              fontSize: "1.2rem",
+            }}
+          >
             Start Game
           </Button>
-        </Box>
+        </Card>
       ) : !showResult ? (
-        <Box>
-          <Typography variant="h6">
+        <Card
+          sx={{
+            maxWidth: 600,
+            mx: "auto",
+            p: 3,
+            borderRadius: "16px",
+            boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
+          }}
+        >
+          <Typography variant="h6" sx={{ mb: 3 }}>
             Question {currentQuestion + 1} / 10
           </Typography>
           <Card sx={{ maxWidth: 300, mx: "auto", my: 2 }}>
@@ -182,40 +232,76 @@ export const CountriesGame = () => {
                 : "Very close, but wrong!"}
             </Typography>
           )}
-        </Box>
+        </Card>
       ) : (
-        <Box>
+        <Card
+          sx={{
+            maxWidth: 600,
+            mx: "auto",
+            p: 3,
+            borderRadius: "16px",
+            boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
+          }}
+        >
           <Typography variant="h5">Game finished! ✨</Typography>
           <Typography variant="h6">
             Your score: <strong>{score}</strong> / 50
           </Typography>
 
           {/* Table for Answer Overview */}
-          <TableContainer component={Paper} sx={{ mt: 3 }}>
+          <TableContainer
+            component={Paper}
+            sx={{
+              mt: 3,
+              borderRadius: "16px",
+              boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
+              overflow: "hidden",
+            }}
+          >
             <Table>
               <TableHead>
                 <TableRow>
                   <TableCell>#</TableCell>
+                  <TableCell>Flag</TableCell>
                   <TableCell>Correct Answer</TableCell>
                   <TableCell>Your Answer</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {answers.map((answer, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{
-                      backgroundColor:
-                        answer.chosen === answer.correct
-                          ? "#C8E6C9"
-                          : "#FFCDD2",
-                    }}
-                  >
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{answer.correct}</TableCell>
-                    <TableCell>{answer.chosen}</TableCell>
-                  </TableRow>
-                ))}
+                {answers.map((answer, index) => {
+                  const correctCountry = countries.find(
+                    (country) => country.name.common === answer.correct
+                  );
+
+                  return (
+                    <TableRow
+                      key={index}
+                      sx={{
+                        backgroundColor:
+                          answer.chosen === answer.correct
+                            ? "#93ffa0"
+                            : "#ff87af",
+                      }}
+                    >
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        {correctCountry && (
+                          <img
+                            src={correctCountry.flags.png}
+                            alt={answer.correct}
+                            style={{
+                              width: "30px",
+                              height: "20px",
+                              marginRight: "8px",
+                            }}
+                          />
+                        )}
+                      </TableCell>
+                      <TableCell>{answer.correct}</TableCell>
+                      <TableCell>{answer.chosen}</TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </TableContainer>
@@ -227,11 +313,36 @@ export const CountriesGame = () => {
               resetGame();
               startGame();
             }}
-            sx={{ mt: 3 }}
+            sx={{
+              background: `linear-gradient(45deg, 
+                ${colors.primary} 0%, 
+                ${colors.secondary} 20%, 
+                ${colors.success} 40%, 
+                ${colors.accent} 60%, 
+                ${colors.lightAccent} 80%, 
+                ${colors.textLight} 100%)`,
+              color: colors.textLight,
+              "&:hover": {
+                background: `linear-gradient(45deg, 
+                  ${colors.textLight} 0%, 
+                  ${colors.lightAccent} 20%, 
+                  ${colors.accent} 40%, 
+                  ${colors.success} 60%, 
+                  ${colors.secondary} 80%, 
+                  ${colors.primary} 100%)`,
+                color: colors.textLight,
+              },
+              borderRadius: "8px",
+              padding: "0.8em 1.2em",
+              margin: "1em",
+              transition: "background 0.3s ease-in-out",
+              fontWeight: "bold",
+              fontSize: "1.2rem",
+            }}
           >
             Play Again
           </Button>
-        </Box>
+        </Card>
       )}
     </Container>
   );
