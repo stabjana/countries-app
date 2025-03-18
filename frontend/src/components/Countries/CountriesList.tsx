@@ -9,6 +9,7 @@ import {
   TextField,
   Fab,
   Zoom,
+  Pagination,
 } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,6 +25,8 @@ const CountriesList = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 20;
 
   useEffect(() => {
     if (countries.length === 0) {
@@ -41,9 +44,10 @@ const CountriesList = () => {
         )
       );
     }
+    setCurrentPage(1);
   }, [searchText, countries]);
 
-  // Scroll Listener for Back to Top Button Visibility
+  // Scroll Listener for the Back to Top Button Visibility
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -63,6 +67,14 @@ const CountriesList = () => {
 
   if (loading) return <h3>Loading countries...</h3>;
   if (error) return <h3>{error}</h3>;
+
+  // calculate the cards shown in one page
+  const totalPages = filteredCountries.length;
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const countriesOnePage = filteredCountries.slice(
+    startIndex,
+    startIndex + cardsPerPage
+  );
 
   return (
     <Container sx={{ py: 4, mt: 2 }}>
@@ -93,6 +105,14 @@ const CountriesList = () => {
           </Grid>
         ))}
       </Grid>
+      {/* Pagination */}
+      <Pagination
+        count={totalPages}
+        page={currentPage}
+        onChange={(e, page) => setCurrentPage(page)}
+        color="primary"
+        sx={{ mt: 4, display: "flex", justifyContent: "center" }}
+      />
 
       {/* Back to Top Button */}
       <Zoom in={showBackToTop}>
