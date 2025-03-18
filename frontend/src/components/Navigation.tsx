@@ -1,4 +1,3 @@
-// navigation
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
@@ -12,50 +11,74 @@ export const Navigation = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <AppBar position="static" sx={{ mb: 3 }}>
+    <AppBar position="static" sx={{ mb: 0 }}>
       <Toolbar>
-        <Button color="inherit" component={RouterLink} to="/">
-          Home
-        </Button>
-        <Button color="inherit" component={RouterLink} to="/test">
-          Test
-        </Button>
-        <Button
-          color="inherit"
-          component={RouterLink}
-          to="/protected"
-          startIcon={<Lock />}
-          sx={{ mr: 2 }}
-        >
-          ProtectedData
-        </Button>
-        <Button
-          color="inherit"
-          component={RouterLink}
-          to="/countriesgame"
-          sx={{ mr: 2 }}
-        >
-          Flag Quiz
-        </Button>
-        <Button
-          color="inherit"
-          component={RouterLink}
-          to="/countries"
-          sx={{ mr: 2 }}
-        >
-          All Countries
-        </Button>
+        {[
+          { label: "Home", path: "/" },
+          { label: "Test", path: "/test" },
+          { label: "ProtectedData", path: "/protected", icon: <Lock /> },
+          { label: "Flag Quiz", path: "/countriesgame" },
+          { label: "All Countries", path: "/countries" },
+        ].map(({ label, path, icon }) => (
+          <Button
+            key={path}
+            color="inherit"
+            component={RouterLink}
+            to={path}
+            startIcon={icon}
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              mr: 2,
+              "&:hover::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%)",
+                animation: "glitter 0.8s ease-out",
+              },
+              "@keyframes glitter": {
+                "0%": { opacity: 1, transform: "scale(1)" },
+                "100%": { opacity: 0, transform: "scale(2)" },
+              },
+            }}
+          >
+            {label}
+          </Button>
+        ))}
+
         {user && (
           <Button
             color="inherit"
             component={RouterLink}
             to="/favourites"
             startIcon={<Favorite />}
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              "&:hover::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%)",
+                animation: "glitter 0.8s ease-out",
+              },
+            }}
           >
             Favourites
           </Button>
         )}
+
         <Box sx={{ flexGrow: 1 }} />
+
         {user ? (
           <Button color="inherit" onClick={signOut} sx={{ mr: 2 }}>
             Logout
@@ -70,14 +93,15 @@ export const Navigation = () => {
             Login
           </Button>
         )}
+
         <Button
           variant="contained"
           onClick={toggleTheme}
           sx={{
-            ml: 2, // Abstand zum Logout-Button
-            backgroundColor: isDarkMode ? colors.accent : "#FF6699", // Dynamische Farbwahl
+            ml: 2,
+            backgroundColor: isDarkMode ? colors.accent : "#FF6699",
             "&:hover": {
-              backgroundColor: isDarkMode ? "#bc6120" : "#c6295d", // Hover-Farbe für beide Themes
+              backgroundColor: isDarkMode ? "#bc6120" : "#c6295d",
             },
           }}
         >

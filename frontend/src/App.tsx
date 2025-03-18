@@ -20,7 +20,7 @@ function App() {
         <Box>
           <Navigation />
 
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ p: 0 }}>
             <Routes>
               <Route
                 path="/login"

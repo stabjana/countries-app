@@ -16,7 +16,7 @@ export const Favourites = () => {
   const allCountries = useAppSelector(selectAllCountries);
 
   useEffect(() => {
-    // because were making an api call
+    // making an api call - get favourites from there
     if (!user) return;
     const fetchFavourites = async () => {
       setLoading(true);
@@ -78,7 +78,7 @@ export const Favourites = () => {
   }
 
   return (
-    <Box sx={{ p: 3 }}>
+    <Box sx={{ p: 3, mt: 4 }}>
       <Typography variant="h4" gutterBottom>
         My favourite countries:
       </Typography>
@@ -91,13 +91,12 @@ export const Favourites = () => {
       {favourites.length === 0 ? (
         <Alert severity="info">You have no favourite countries yet.</Alert>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ p: 3 }}>
           {favourites.map((favorite) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={favorite.id}>
               <CountryCard country={convertToCountry(favorite)} />
             </Grid>
           ))}{" "}
-          {/* we dont need a return keyword */}
         </Grid>
       )}
     </Box>

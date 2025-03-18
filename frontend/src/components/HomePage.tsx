@@ -11,11 +11,10 @@ const HomePage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: "auto",
-        backgroundImage: "url('/wallpaperbetter.com_1366x768.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        p: 4,
+        height: "100vh",
+        width: "100vw",
+        backgroundImage: "url('/wallpaperbetter.com_1920x1080.jpg')",
+        objectFit: "cover",
       }}
     >
       <Card

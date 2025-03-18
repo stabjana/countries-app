@@ -128,13 +128,13 @@ export const CountriesGame = () => {
   if (error) return <h3>{error}</h3>;
 
   return (
-    <Container sx={{ py: 4, textAlign: "center" }}>
+    <Container sx={{ py: 5, mt: 10, textAlign: "center" }}>
       {!gameStarted ? (
         <Card
           sx={{
             maxWidth: 600,
             mx: "auto",
-            p: 3,
+            p: 7,
             borderRadius: "16px",
             boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
           }}
@@ -187,7 +187,7 @@ export const CountriesGame = () => {
           sx={{
             maxWidth: 600,
             mx: "auto",
-            p: 3,
+            p: 7,
             borderRadius: "16px",
             boxShadow: `0px 4px 10px rgba(0, 0, 0, 0.1)`,
           }}
@@ -211,12 +211,22 @@ export const CountriesGame = () => {
                 variant="contained"
                 sx={{
                   m: 1,
+                  mt: 3,
                   backgroundColor:
                     selectedAnswer === option
                       ? option === questions[currentQuestion].correctAnswer
                         ? "success.main"
                         : "error.main"
                       : "primary.main",
+                  "&:hover": {
+                    backgroundColor:
+                      selectedAnswer === option
+                        ? option === questions[currentQuestion].correctAnswer
+                          ? "success.dark"
+                          : "error.dark"
+                        : "primary.dark",
+                    filter: "brightness(1.2)", // Slightly brighten on hover in dark mode
+                  },
                 }}
                 onClick={() => handleAnswer(option)}
                 disabled={!!selectedAnswer}

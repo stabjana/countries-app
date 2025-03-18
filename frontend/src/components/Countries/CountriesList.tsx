@@ -65,7 +65,7 @@ const CountriesList = () => {
   if (error) return <h3>{error}</h3>;
 
   return (
-    <Container sx={{ py: 4 }}>
+    <Container sx={{ py: 4, mt: 2 }}>
       <Typography variant="h4" gutterBottom>
         Countries
       </Typography>
@@ -77,7 +77,7 @@ const CountriesList = () => {
         variant="outlined"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        sx={{ mb: 3 }}
+        sx={{ mb: 4 }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
