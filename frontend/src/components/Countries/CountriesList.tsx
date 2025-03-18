@@ -56,7 +56,6 @@ const CountriesList = () => {
         setShowBackToTop(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -106,13 +105,15 @@ const CountriesList = () => {
         ))}
       </Grid>
       {/* Pagination */}
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={(e, page) => setCurrentPage(page)}
-        color="primary"
-        sx={{ mt: 4, display: "flex", justifyContent: "center" }}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          count={Math.ceil(totalPages / cardsPerPage)}
+          page={currentPage}
+          onChange={(e, page) => setCurrentPage(page)}
+          color="primary"
+          sx={{ mt: 4, display: "flex", justifyContent: "center" }}
+        />
+      )}
 
       {/* Back to Top Button */}
       <Zoom in={showBackToTop}>

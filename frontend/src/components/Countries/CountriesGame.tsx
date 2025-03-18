@@ -128,7 +128,7 @@ export const CountriesGame = () => {
   if (error) return <h3>{error}</h3>;
 
   return (
-    <Container sx={{ py: 5, mt: 10, textAlign: "center" }}>
+    <Container sx={{ py: 5, mt: 5, textAlign: "center" }}>
       {!gameStarted ? (
         <Card
           sx={{
@@ -293,7 +293,14 @@ export const CountriesGame = () => {
                             : "#ff87af",
                       }}
                     >
-                      <TableCell>{index + 1}</TableCell>
+                      <TableCell
+                        sx={{
+                          color: (theme) =>
+                            theme.palette.mode === "dark" ? "#333" : "inherit",
+                        }}
+                      >
+                        {index + 1}
+                      </TableCell>
                       <TableCell>
                         {correctCountry && (
                           <img
@@ -307,8 +314,22 @@ export const CountriesGame = () => {
                           />
                         )}
                       </TableCell>
-                      <TableCell>{answer.correct}</TableCell>
-                      <TableCell>{answer.chosen}</TableCell>
+                      <TableCell
+                        sx={{
+                          color: (theme) =>
+                            theme.palette.mode === "dark" ? "#333" : "inherit",
+                        }}
+                      >
+                        {answer.correct}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: (theme) =>
+                            theme.palette.mode === "dark" ? "#333" : "inherit",
+                        }}
+                      >
+                        {answer.chosen}
+                      </TableCell>
                     </TableRow>
                   );
                 })}
