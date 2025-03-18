@@ -26,7 +26,6 @@ const HomePage = () => {
           textAlign: "center",
           bgcolor: isDarkMode ? "#1E1E1E" : "#FFFFFF",
           color: isDarkMode ? "#F3FBFF" : "#001823",
-          p: 2,
         }}
       >
         <Typography variant="h2" sx={{ fontWeight: "bold", m: 3 }}>
