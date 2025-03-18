@@ -80,7 +80,7 @@ export const Favourites = () => {
   return (
     <Box sx={{ p: 3, mt: 4 }}>
       <Typography variant="h4" gutterBottom>
-        My favourite countries:
+        My favourite countries
       </Typography>
       {error && (
         <Alert severity="error" sx={{ mb: 3 }}>
