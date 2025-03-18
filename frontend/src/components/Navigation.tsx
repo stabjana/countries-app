@@ -80,7 +80,26 @@ export const Navigation = () => {
         <Box sx={{ flexGrow: 1 }} />
 
         {user ? (
-          <Button color="inherit" onClick={signOut} sx={{ mr: 2 }}>
+          <Button
+            color="inherit"
+            onClick={signOut}
+            sx={{
+              mr: 2,
+              position: "relative",
+              overflow: "hidden",
+              "&:hover::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%)",
+                animation: "glitter 0.8s ease-out",
+              },
+            }}
+          >
             Logout
           </Button>
         ) : (
@@ -88,7 +107,22 @@ export const Navigation = () => {
             color="inherit"
             component={RouterLink}
             to="/login"
-            sx={{ mr: 2 }}
+            sx={{
+              mr: 2,
+              position: "relative",
+              overflow: "hidden",
+              "&:hover::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%)",
+                animation: "glitter 0.8s ease-out",
+              },
+            }}
           >
             Login
           </Button>
