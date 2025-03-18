@@ -26,17 +26,20 @@ const HomePage = () => {
           textAlign: "center",
           bgcolor: isDarkMode ? "#1E1E1E" : "#FFFFFF",
           color: isDarkMode ? "#F3FBFF" : "#001823",
+          p: 2,
         }}
       >
-        <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2 }}>
-          Welcome to Your App 🌍
+        <Typography variant="h2" sx={{ fontWeight: "bold", m: 3 }}>
+          Hello World! 🌍
         </Typography>
         <Typography variant="h5" sx={{ mb: 4 }}>
-          This is not just an app. It's an adventure. A playground. A little
-          universe where you can explore countries, see real-time weather data
-          for their capitals, play a flag game, and keep track of your
+          This is my first real full-stack app. We partly built it together in
+          our React lessons and partly I was building it at home. I tried to
+          make it an adventure with a little game and eventually you get some
+          learning expierience from it. You can explore countries, see real-time
+          weather data for their capitals, play the game, and keep track of your
           favorites! Plus, secure login with Supabase authentication gives you
-          access to exclusive content!
+          access to protected content. 🐠🐝
         </Typography>
         <Box
           sx={{
