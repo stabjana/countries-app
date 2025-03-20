@@ -12,8 +12,9 @@ async function bootstrap() {
 
   // Enable CORS for local React development
   app.enableCors({
-    origin: true, // Allow all origins
+    origin: 'https://countries-stabjana.onrender.com', // Allow frontend origins
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
   await app.listen(process.env.PORT ?? 5001);
