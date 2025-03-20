@@ -26,6 +26,11 @@ export const Navigation = () => {
             component={RouterLink}
             to={path}
             startIcon={icon}
+            onClick={(_e) => {
+              if (window.location.pathname === path) {
+                window.location.reload();
+              }
+            }}
             sx={{
               position: "relative",
               overflow: "hidden",
