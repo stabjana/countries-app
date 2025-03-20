@@ -145,7 +145,7 @@ export const Favourites = () => {
             <Pagination
               count={Math.ceil(totalPages / cardsPerPage)}
               page={currentPage}
-              onChange={(e, page) => setCurrentPage(page)}
+              onChange={(_e, page) => setCurrentPage(page)}
               color="primary"
               sx={{ mt: 4, display: "flex", justifyContent: "center" }}
             />

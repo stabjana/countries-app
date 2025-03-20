@@ -8,7 +8,7 @@ interface DataActionsProps {
   onDelete: () => void;
 }
 
-export const DataActions = ({ row, onEdit, onDelete }: DataActionsProps) => {
+export const DataActions = ({ onEdit, onDelete }: DataActionsProps) => {
   return (
     <>
       <Tooltip title="Edit">
