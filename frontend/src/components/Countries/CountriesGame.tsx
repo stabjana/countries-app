@@ -127,7 +127,33 @@ export const CountriesGame = () => {
   if (error) return <h3>{error}</h3>;
 
   return (
-    <Container sx={{ py: 5, mt: 5, textAlign: "center" }}>
+    <Container
+      sx={{
+        py: 5,
+        mt: 0,
+        textAlign: "center",
+        background: `linear-gradient(45deg, 
+                    ${colors.primary} 0%, 
+                    ${colors.secondary} 20%, 
+                    ${colors.success} 40%, 
+                    ${colors.accent} 60%, 
+                    ${colors.lightAccent} 80%, 
+                    ${colors.textLight} 100%)`,
+        color: colors.textLight,
+        "&:hover": {
+          background: `linear-gradient(45deg, 
+                      ${colors.textLight} 0%, 
+                      ${colors.lightAccent} 20%, 
+                      ${colors.accent} 40%, 
+                      ${colors.success} 60%, 
+                      ${colors.secondary} 80%, 
+                      ${colors.primary} 100%)`,
+          color: colors.textLight,
+        },
+        minWidth: "100vw",
+        minHeight: "100vh",
+      }}
+    >
       {!gameStarted ? (
         <Card
           sx={{

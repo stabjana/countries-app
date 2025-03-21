@@ -1,8 +1,8 @@
 # 🌍 Countries Fullstack React Project
 
-This is my first real full-stack app. We partly built it together in our React lessons and partly I was building it at home. I tried to make it an adventure with a little game and eventually you get some learning expierience from it. You can explore countries, see real-time weather data for their capitals, play the game, and keep track of your favorites! Plus, secure login with Supabase authentication gives you access to protected content. 🐠🐝
+This is my first real full-stack app. We partly built it together in our React lessons and partly I was building it at home. I tried to make it an adventure with a little game and eventually you get some learning expierience from it. You can explore countries, see real-time weather data for their capitals, play the game, and keep track of your favorites! Plus, secure login with Supabase authentication gives you access to protected content and you can choose between dark and light mode. 🐠🐝
 
-The app is deployed here:
+You can visit the app here:
 
 https://countries-stabjana.onrender.com
 

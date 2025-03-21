@@ -19,7 +19,6 @@ function App() {
       <BrowserRouter>
         <Box>
           <Navigation />
-
           <Box sx={{ p: 0 }}>
             <Routes>
               <Route
