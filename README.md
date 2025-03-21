@@ -6,6 +6,9 @@ You can visit the app here:
 
 https://countries-stabjana.onrender.com
 
+the newest version is in the branch: main (which carries the deployed version)  
+and the branch localMain for running it locally.
+
 ## 📂 Project Structure
 
 ```shell
