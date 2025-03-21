@@ -12,7 +12,7 @@ async function bootstrap() {
 
   // Enable CORS for local React development
   app.enableCors({
-    origin: 'https://countries-stabjana.onrender.com', // Allow frontend origins
+    origin: '*', //'https://countries-stabjana.onrender.com', // would Allow frontend access but blocks supabase
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
