@@ -1,6 +1,4 @@
 // Login.tsx
-// used everywhere in the app
-
 import { Box, Paper, Typography } from "@mui/material";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
