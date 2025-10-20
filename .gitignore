@@ -53,10 +53,13 @@ Thumbs.db
 .temp/
 .tmp/
 .cache/
+db_cluster-28-03-2025@10-21-00.backup.gz
+
 
 # Project specific
 backend/dist/
 frontend/dist/
+my-supabase-restore/
 
 nächste_schritte.md
 google-login.md
