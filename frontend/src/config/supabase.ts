@@ -9,4 +9,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error("Missing Supabase environment variables");
 }
 
+console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
+// Remove this console.log after verification!
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

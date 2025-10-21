@@ -13,11 +13,12 @@ async function bootstrap() {
   // Enable CORS for local React development
   app.enableCors({
     origin: [
-            'https://countries-stabjana.onrender.com',
-            'https://countries-stabjana.onrender.com:3000', 
-            'https://fxiwabepasidehipxvkr.supabase.co', 
-            'https://play.google.com/log?format=json&hasfast=true&authuser=0'
-            ],
+      'https://countries-stabjana.onrender.com',
+      'https://countries-stabjana.onrender.com:3000',
+      'https://fxiwabepasidehipxvkr.supabase.co',
+      'https://play.google.com/log?format=json&hasfast=true&authuser=0',
+      'http://localhost:5173',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
