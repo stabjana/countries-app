@@ -1,25 +1,33 @@
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
-import { Favorite, Lock } from "@mui/icons-material";
+import { Favorite, Home, Public, SportsEsports, DataObject } from "@mui/icons-material";
 import { ThemeContext } from "../theme/themeContext";
 import { useContext } from "react";
 import { colors } from "../theme/theme";
+import { ReactNode } from 'react';
+
+interface MenuItem {
+  label: string;
+  path: string;
+  icon?: ReactNode;  // Make icon optional with ?
+}
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
+  const menuItems: MenuItem[] = [
+    { label: "Home", path: "/", icon: <Home /> },
+    { label: "Test", path: "/test", icon: <DataObject /> },
+    { label: "Flag Quiz", path: "/countriesgame", icon: <SportsEsports /> },
+    { label: "All Countries", path: "/countries", icon: <Public /> },
+  ];
+
   return (
     <AppBar position="static" sx={{ mb: 0 }}>
       <Toolbar>
-        {[
-          { label: "Home", path: "/" },
-          { label: "Test", path: "/test" },
-          { label: "ProtectedData", path: "/protected", icon: <Lock /> },
-          { label: "Flag Quiz", path: "/countriesgame" },
-          { label: "All Countries", path: "/countries" },
-        ].map(({ label, path, icon }) => (
+        {menuItems.map(({ label, path, icon }) => (
           <Button
             key={path}
             color="inherit"
