@@ -14,5 +14,10 @@ jobs:
       - name: Ping backend
         run: |
           echo "Pinging Backend..."
-          response=$(curl -s -w "%{http_code}" -o /dev/null https://countries-backend.onrender.com/ping)
+          response=$(curl -i -X GET https://countries-backend-zm89.onrender.com/test)
           echo "HTTP Response: $response"
+          if [[ $response == *"200"* ]]; then
+            echo "✓ Backend is awake"
+          else
+            echo "✗ Backend ping failed"
+          fi
