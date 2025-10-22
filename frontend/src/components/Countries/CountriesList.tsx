@@ -18,8 +18,8 @@ import { Country } from "../../types/country";
 
 const CountriesList = () => {
   const dispatch = useAppDispatch();
-  const { countries, loading, error } = useAppSelector(
-    (state) => state.countries
+  const { countries = [], loading, error } = useAppSelector(
+    (state) => state.countries || {}
   );
 
   const [searchText, setSearchText] = useState("");
