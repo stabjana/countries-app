@@ -17,7 +17,7 @@ export const Login = () => {
     >
       <Paper elevation={3} sx={{ p: 4, maxWidth: 400, width: "100%" }}>
         <Typography variant="h5" gutterBottom textAlign="center">
-          Welcome
+          Login feature not available at the moment!
         </Typography>
         <Auth
           supabaseClient={supabase}

@@ -2,7 +2,8 @@ import { Controller, Get } from '@nestjs/common';
 import { SupabaseService } from '../services/supabase.service';
 
 @Controller('test')
-export class TestController { // handles requests - is defining endpoint
+export class TestController {
+  // handles requests - is defining endpoint
   constructor(private readonly supabaseService: SupabaseService) {}
 
   @Get('supabase') // endpoint - /supabase

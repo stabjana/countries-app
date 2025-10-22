@@ -1,39 +1,29 @@
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { Link as RouterLink } from "react-router-dom";
-import { Favorite, Home, Public, SportsEsports, DataObject } from "@mui/icons-material";
+import { Favorite} from "@mui/icons-material";
 import { ThemeContext } from "../theme/themeContext";
 import { useContext } from "react";
 import { colors } from "../theme/theme";
-import { ReactNode } from 'react';
-
-interface MenuItem {
-  label: string;
-  path: string;
-  icon?: ReactNode;  // Make icon optional with ?
-}
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-  const menuItems: MenuItem[] = [
-    { label: "Home", path: "/", icon: <Home /> },
-    { label: "Test", path: "/test", icon: <DataObject /> },
-    { label: "Flag Quiz", path: "/countriesgame", icon: <SportsEsports /> },
-    { label: "All Countries", path: "/countries", icon: <Public /> },
-  ];
-
   return (
     <AppBar position="static" sx={{ mb: 0 }}>
       <Toolbar>
-        {menuItems.map(({ label, path, icon }) => (
+        {[
+          { label: "Home", path: "/" },
+          { label: "Test", path: "/test" },
+          { label: "Flag Quiz", path: "/countriesgame" },
+          { label: "All Countries", path: "/countries" },
+        ].map(({ label, path }) => (
           <Button
             key={path}
             color="inherit"
             component={RouterLink}
             to={path}
-            startIcon={icon}
             onClick={(_e) => {
               if (window.location.pathname === path) {
                 window.location.reload();

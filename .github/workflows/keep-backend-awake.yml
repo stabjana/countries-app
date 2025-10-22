@@ -1,0 +1,17 @@
+name: Keep Backend Awake
+
+# Cronjob: alle 15 Minuten
+on:
+  schedule:
+    - cron: "0 16 * * 2" # every tuesday at 16
+  workflow_dispatch:
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping backend
+        run: |
+          echo "Pinging Backend..."
+          curl -s https://countries-backend.onrender.com/ping
