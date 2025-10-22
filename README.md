@@ -6,9 +6,6 @@ You can visit the app here:
 
 https://countries-stabjana.onrender.com
 
-the newest version is in the branch: main (which carries the deployed version)  
-and the branch localMain for running it locally. But the Protected Data and Test data is only accessible in the deployed version.
-
 ## 📂 Project Structure
 
 ```shell
