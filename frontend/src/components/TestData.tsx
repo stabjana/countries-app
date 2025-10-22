@@ -24,30 +24,6 @@ export const TestData = () => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
-  //   const [data, setData] = useState<TestResponse | null>(null);
-  //   const [error, setError] = useState<string | null>(null);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch("http://localhost:5001/test/supabase");
-  //         const result = await response.json();
-
-  //         if (result.error) {
-  //           setError(result.error);
-  //         } else {
-  //           setData(result);
-  //         }
-  //       } catch (err) {
-  //         setError(err instanceof Error ? err.message : "An error occurred");
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
   if (error) {
     return (
       <Box sx={{ p: 3 }}>
@@ -73,7 +49,7 @@ export const TestData = () => {
         Status: Connected | Last Updated: {new Date().toLocaleString()}
       </Typography>
 
-      {data.length > 0 && <DynamicTable data={data} />}
+      {data?.length > 0 && <DynamicTable data={data} />}
     </Box>
   );
 };

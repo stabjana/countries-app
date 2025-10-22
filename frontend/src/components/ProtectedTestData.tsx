@@ -43,7 +43,7 @@ export const ProtectedTestData = () => {
 
       <CreateEntryForm onSuccess={fetchProtectedData} />
 
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         <DynamicTable data={data} />
       ) : (
         <div>No protected data available, please create some.</div>

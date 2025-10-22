@@ -110,7 +110,7 @@ export const Favourites = () => {
   }
 
   // calculate the cards shown in one page
-  const totalPages = favourites.length;
+  const totalPages = favourites?.length;
   const startIndex = (currentPage - 1) * cardsPerPage;
   const countriesOnePage = favourites.slice(
     startIndex,
@@ -128,7 +128,7 @@ export const Favourites = () => {
         </Alert>
       )}
 
-      {favourites.length === 0 ? (
+      {favourites?.length === 0 ? (
         <Alert severity="info">You have no favourite countries yet.</Alert>
       ) : (
         <>

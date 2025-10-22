@@ -27,7 +27,12 @@ export const CountriesGame = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState<any[]>([]);
+  type Question = {
+    flag: string;
+    correctAnswer: string;
+    options: string[];
+  };
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [answers, setAnswers] = useState<
@@ -51,22 +56,22 @@ export const CountriesGame = () => {
 
   // generate the questions including the correct answer and 3 incorrect answers
   const generateQuestions = () => {
-    let questionsList = [];
-    let shuffledCountries = [...countries]
+    const questionsList = [];
+    const shuffledCountries = [...countries]
       .sort(() => 0.5 - Math.random())
       .slice(0, 10);
 
-    for (let country of shuffledCountries) {
-      let correctAnswer = country.name.common;
-      let flag = country.flags.png;
+    for (const country of shuffledCountries) {
+      const correctAnswer = country.name.common;
+      const flag = country.flags.png;
 
-      let incorrectAnswers = countries
+      const incorrectAnswers = countries
         .filter((c) => c.name.common !== correctAnswer)
         .sort(() => 0.5 - Math.random())
         .slice(0, 3)
         .map((c) => c.name.common);
 
-      let options = [correctAnswer, ...incorrectAnswers].sort(
+      const options = [correctAnswer, ...incorrectAnswers].sort(
         () => 0.5 - Math.random()
       );
 
@@ -91,7 +96,7 @@ export const CountriesGame = () => {
     setSelectedAnswer(answer);
     setShowFeedback(true);
 
-    let isCorrect = answer === questions[currentQuestion].correctAnswer;
+    const isCorrect = answer === questions[currentQuestion].correctAnswer;
     // here you get points for the coreect answer
     if (isCorrect) {
       setScore((prevScore) => prevScore + 5);
