@@ -6,6 +6,14 @@ export class TestController {
   // handles requests - is defining endpoint
   constructor(private readonly supabaseService: SupabaseService) {}
 
+  @Get('ping') // endpoint - /ping
+  async ping() {
+    return {
+      status: 'OK',
+      timestamp: new Date().toISOString(),
+    };
+  }
+
   @Get('supabase') // endpoint - /supabase
   async testConnection() {
     try {
