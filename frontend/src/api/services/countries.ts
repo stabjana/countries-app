@@ -1,19 +1,22 @@
+import axios from "axios";
 import { Country } from "../../types/country";
-import { api } from "../axios";
-
-const BASE_URL = "https://restcountries.com/v3.1";
 
 const FIELDS =
   "name,capital,population,flags,cca3,languages,currencies,region,maps";
+
+const restApi = axios.create({
+  baseURL: "https://restcountries.com/v3.1",
+  params: {
+    fields: FIELDS,
+  },
+});
 
 export const countriesApi = {
   /**
    * Fetch all countries
    */
   getAllCountries: async (): Promise<Country[]> => {
-    const response = await api.get(`${BASE_URL}/all`, {
-      params: { fields: FIELDS },
-    });
+    const response = await restApi.get(`/all`);
     return response.data;
   },
 
@@ -21,12 +24,7 @@ export const countriesApi = {
    * Fetch countries by name (e.g. "Finland")
    */
   getCountryByName: async (name: string): Promise<Country[]> => {
-    const response = await api.get(
-      `${BASE_URL}/name/${encodeURIComponent(name)}`,
-      {
-        params: { fields: FIELDS },
-      }
-    );
+    const response = await restApi.get(`/name/${encodeURIComponent(name)}`);
     return response.data;
   },
 
@@ -34,12 +32,7 @@ export const countriesApi = {
    * Fetch country by 3-letter code (e.g. "FIN")
    */
   getCountryByCode: async (code: string): Promise<Country[]> => {
-    const response = await api.get(
-      `${BASE_URL}/alpha/${encodeURIComponent(code)}`,
-      {
-        params: { fields: FIELDS },
-      }
-    );
+    const response = await restApi.get(`/alpha/${encodeURIComponent(code)}`);
     return response.data;
   },
 };
