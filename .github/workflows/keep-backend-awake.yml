@@ -1,9 +1,8 @@
-name: Keep Backend Awake
+name: Keep Supabase Awake
 
-# Cronjob: alle 15 Minuten
 on:
   schedule:
-    - cron: "0 16 * * 2" # every tuesday at 16
+    - cron: "*/15 * * * *" # every 15 minutes
   workflow_dispatch:
 
 jobs:
@@ -11,13 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping backend
+      - name: Ping Supabase
         run: |
-          echo "Pinging Backend..."
-          response=$(curl -i -X GET https://countries-backend-zm89.onrender.com/test)
-          echo "HTTP Response: $response"
-          if [[ $response == *"200"* ]]; then
-            echo "✓ Backend is awake"
+          echo "Pinging Supabase..."
+          supabase_response=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://xwrxnjvxaqourbysahes.supabase.co/rest/v1/health" \
+            -H "apikey: $SUPABASE_ANON_KEY")
+
+          echo "Supabase HTTP: $supabase_response"
+
+          if [ "$supabase_response" == "200" ]; then
+            echo "✓ Supabase is awake"
           else
-            echo "✗ Backend ping failed"
+            echo "✗ Supabase ping failed (HTTP $supabase_response)"
           fi
